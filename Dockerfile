@@ -1,5 +1,5 @@
 # Use the official Node.js base image
-FROM node:14-alpine
+FROM node:14-alpine AS build
 
 # Set the working directory in the container
 WORKDIR /app
@@ -20,3 +20,5 @@ RUN npm run-script build
 
 # Start the application using the build-run script
 CMD ["node", "dist/server.js"]
+
+

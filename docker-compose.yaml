@@ -5,8 +5,8 @@ services:
     build: .
     container_name: nodeapp
     labels:
-      - "version=1.0"
-      - "description=This is my Node.js app"
+      - "version=2.0"
+      - "description=This is my Node.js app: backend_v2"
     ports:
       - '5000:5000'
     environment:
@@ -15,6 +15,14 @@ services:
       - MONGO_DB_PORT=mongodb://mongodb:27017/db
     depends_on:
       - mongodb
+
+  angular:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    container_name: webapp
+    ports:
+      - "8080:8080"
 
   mongodb:
     image: mongo:4.4
